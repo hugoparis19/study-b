@@ -1,0 +1,27 @@
+<section class="sample-app-content">
+  <h1>Reactive Form Example:</h1>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <p>
+      <label>First Name:</label>
+      <input type="text" formControlName="firstName" [autocomplete]="'off'" />
+    </p>
+    <p>
+      <label>Password:</label>
+      <input
+        type="password"
+        formControlName="password"
+        [autocomplete]="'off'"
+      />
+    </p>
+    <study-b-choose-quantity
+      [increment]="10"
+      formControlName="totalQuantity"
+    ></study-b-choose-quantity>
+    <p>
+      <button type="submit" [disabled]="!form.valid">Submit</button>
+      <button (click)="partialUpdate()">Partial Update</button>
+      <button (click)="fullUpdate()">Full Update</button>
+      <button (click)="reset()">Cancel</button>
+    </p>
+  </form>
+</section>
