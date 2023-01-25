@@ -7,9 +7,19 @@
         type="text"
         [(ngModel)]="user.firstName"
         required
+        minlength="4"
+        appForbiddenName="bob"
         [ngModelOptions]="{ standalone: true }"
+        #name="ngModel"
       />
     </p>
+    <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert">
+      <div *ngIf="name.errors?.['required']">Name is required.</div>
+      <div *ngIf="name.errors?.['minlength']">
+        Name must be at least 4 characters long.
+      </div>
+      <div *ngIf="name.errors?.['forbiddenName']">Name cannot be Bob.</div>
+    </div>
     <p>
       <label>Password:</label>
       <input
@@ -19,6 +29,7 @@
         [ngModelOptions]="{ standalone: true }"
       />
     </p>
+    {{ myForm.value | json }}
     <p>
       <button type="submit" [disabled]="!myForm.valid">Submit</button>
     </p>

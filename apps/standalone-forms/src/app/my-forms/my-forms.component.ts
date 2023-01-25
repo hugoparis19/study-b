@@ -16,7 +16,7 @@ export class MyFormsComponent {
     password: 'Doe',
   };
 
-  onSubmitTemplateBased(value: User) {
+  onSubmitTemplateBased(_value: User) {
     console.log(this.user);
   }
 }
